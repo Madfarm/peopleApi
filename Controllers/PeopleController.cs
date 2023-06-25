@@ -9,7 +9,12 @@ namespace PeopleApi.Controllers;
 [Route("[controller]")]
 public class PeopleController :  ControllerBase
 {
-    private readonly MongoDBService _mongoDBService; 
+    private readonly MongoDBService _mongoDBService;
+
+    public PeopleController(MongoDBService mongoDBService)
+    {
+        _mongoDBService = mongoDBService;
+    } 
     [HttpPost]
     public async Task<ActionResult> CreatePerson([FromBody] PeopleCreateDto peopleDto)
     {
@@ -24,7 +29,7 @@ public class PeopleController :  ControllerBase
 
         return CreatedAtAction(nameof(GetPeople), person.AsDto());
     }
-
+    [HttpGet]
     public async Task<List<Person>> GetPeople()
     {
         return await _mongoDBService.GetPeople();
