@@ -7,9 +7,6 @@ namespace PeopleApi.Controllers;
 [Route("[controller]")]
 public class PeopleController :  ControllerBase
 {
-    // [HttpGet]
-    // public IEnumerable<Person> GetPeople()
-    // {
-        
-    // }
+    [HttpPost]
+    public async CreatePerson([FromBody] )
 }
