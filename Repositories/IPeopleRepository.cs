@@ -1,13 +1,14 @@
 using MongoDB.Driver;
+using PeopleApi.Dtos;
 using PeopleApi.Models;
 
 namespace PeopleApi.Repositories;
 
 public interface IPeopleRepository
 {
-    Task<IEnumerable<Person>> GetPeople();
+    Task<List<Person>> GetPeople();
     Task<Person> GetOnePerson();
-    Task CreatePerson();
+    Task CreatePerson(Person person);
     Task<ReplaceOneResult> UpdatePerson();
     Task<DeleteResult> DeletePerson();
 

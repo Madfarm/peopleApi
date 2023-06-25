@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using PeopleApi.Database;
 using PeopleApi.Models;
@@ -36,9 +37,9 @@ public class MongoDBService : IPeopleRepository
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Person>> GetPeople()
+    public async Task<List<Person>> GetPeople()
     {
-        throw new NotImplementedException();
+        return await _peopleCollection.Find(new BsonDocument()).ToListAsync();
     }
 
     public Task<ReplaceOneResult> UpdatePerson()
