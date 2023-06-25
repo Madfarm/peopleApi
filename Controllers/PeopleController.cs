@@ -22,7 +22,7 @@ public class PeopleController :  ControllerBase
         };
         await _mongoDBService.CreatePerson(person);
 
-        return CreatedAtAction(nameof(GetPeople))
+        return CreatedAtAction(nameof(GetPeople), person.AsDto());
     }
 
     public async Task<List<Person>> GetPeople()
