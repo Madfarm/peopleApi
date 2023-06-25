@@ -7,4 +7,5 @@ public record Person
     public string Name { get; init; }
     public int Age { get; init; }
     public string Pic { get; init; }
+    public DateTimeOffset dateCreated { get; set; }
 }
