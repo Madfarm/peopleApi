@@ -17,8 +17,6 @@ public class MongoDBService : IPeopleRepository
         var client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
         var database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
         _peopleCollection = database.GetCollection<Person>(mongoDBSettings.Value.CollectionName);
-
-        System.Console.WriteLine(_peopleCollection);
     }
 
     public async Task CreatePerson(Person person)

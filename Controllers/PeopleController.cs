@@ -27,7 +27,7 @@ public class PeopleController :  ControllerBase
         };
         await _mongoDBService.CreatePerson(person);
 
-        return CreatedAtAction(nameof(GetPeople), person.AsDto());
+        return CreatedAtAction(nameof(GetPeople), new {id = person.Id}, person.AsDto());
     }
     [HttpGet]
     public async Task<List<Person>> GetPeople()
