@@ -25,9 +25,10 @@ public class MongoDBService : IPeopleRepository
         return;
     }
 
-    public Task<DeleteResult> DeletePerson(Guid id)
+    public async Task<DeleteResult> DeletePerson(Guid id)
     {
-        throw new NotImplementedException();
+       var filter = filterBuilder.Eq(person => person.Id, id);
+       return await _peopleCollection.DeleteOneAsync(filter);
     }
 
     public async Task<Person> GetOnePerson(Guid id)

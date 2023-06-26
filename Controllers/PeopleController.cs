@@ -46,4 +46,18 @@ public class PeopleController :  ControllerBase
 
         return existingPerson.AsDto();
     }
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeletePerson(Guid id)
+    {
+        var existingPerson = await _mongoDBService.GetOnePerson(id);
+
+        if (existingPerson is null)
+        {
+            return NotFound();
+        }
+
+        await _mongoDBService.DeletePerson(id);
+
+        return NoContent();
+    }
 }
