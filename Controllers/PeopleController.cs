@@ -34,4 +34,16 @@ public class PeopleController :  ControllerBase
     {
         return await _mongoDBService.GetPeople();
     }
+    [HttpGet("{id}")]
+    public async Task<ActionResult<PersonDto>> GetOnePerson(Guid id)
+    {
+        var existingPerson = await _mongoDBService.GetOnePerson(id);
+
+        if (existingPerson is null)
+        {
+            return NoContent();
+        }
+
+        return existingPerson.AsDto();
+    }
 }

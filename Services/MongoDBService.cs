@@ -25,14 +25,15 @@ public class MongoDBService : IPeopleRepository
         return;
     }
 
-    public Task<DeleteResult> DeletePerson()
+    public Task<DeleteResult> DeletePerson(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Person> GetOnePerson()
+    public async Task<Person> GetOnePerson(Guid id)
     {
-        throw new NotImplementedException();
+        var filter = filterBuilder.Eq(person => person.Id, id);
+        return await _peopleCollection.Find(filter).SingleOrDefaultAsync();
     }
 
     public async Task<List<Person>> GetPeople()
@@ -40,7 +41,7 @@ public class MongoDBService : IPeopleRepository
         return await _peopleCollection.Find(new BsonDocument()).ToListAsync();
     }
 
-    public Task<ReplaceOneResult> UpdatePerson()
+    public Task<ReplaceOneResult> UpdatePerson(Guid id, Person person)
     {
         throw new NotImplementedException();
     }
