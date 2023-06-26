@@ -27,11 +27,28 @@ public class MongoDBSettings
     public string CollectionName { get; set; }
 }
 
-initialize the .NET secret manager
-dotnet users-secrets init
+
 
 in appsettings.json,
-add a new object
+add a new object:
+
+"MongoDB": {
+    "DatabaseName":"<name of database>",
+    "CollectionName": "<name of collection>"
+}
+
+
+
+
+
+initialize the .NET secret manager
+dotnet user-secrets init
+
+then add the connection string to our secrets manager with the cli
+dotnet user-secrets set MongoDB:ConnectionURI "<connection string here>"
+
+
+
 
 in Program.cs,
 
