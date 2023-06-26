@@ -42,8 +42,10 @@ public class MongoDBService : IPeopleRepository
         return await _peopleCollection.Find(new BsonDocument()).ToListAsync();
     }
 
-    public Task<ReplaceOneResult> UpdatePerson(Guid id, Person person)
+    public async Task<ReplaceOneResult> UpdatePerson(Guid id, Person newPerson)
     {
-        throw new NotImplementedException();
+        var filter = filterBuilder.Eq(person => person.Id, id);
+        return await _peopleCollection.ReplaceOneAsync(filter, newPerson);
+
     }
 }

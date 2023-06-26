@@ -60,4 +60,26 @@ public class PeopleController :  ControllerBase
 
         return NoContent();
     }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdatePerson(Guid id, [FromBody] PeopleUpdateDto personDto)
+    {
+        var existingPerson = await _mongoDBService.GetOnePerson(id);
+
+        if (existingPerson is null)
+        {
+            return NotFound();
+        }
+
+        Person newPerson = existingPerson with 
+        {
+            Name = personDto.Name,
+            Age = personDto.Age,
+            Pic = personDto.Pic
+        };
+
+        await _mongoDBService.UpdatePerson(id, newPerson);
+
+        return NoContent();
+    }
 }
