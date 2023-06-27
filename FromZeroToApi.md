@@ -40,7 +40,7 @@ public record ModelName
 
 ## Step 3 - Database Connection
 
-make a database folder and then in that folder make a MongoDBSettings.cs file
+make a Database or Settings folder and then in that folder make a MongoDBSettings.cs file
 in that file,
 make a namespace for the database settings, and add a class with the properties that will host the connection details
 
