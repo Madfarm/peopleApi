@@ -88,5 +88,43 @@ now we need to create a service that actually connects to MongoDb
 create Services/MongoDBService.cs
 
 in that file,
+add it to the appropriate namespace then declare a public class named MongoDBSettings and create a private readonly property that's going hold the mongo collection
+
+ex: 
+namespace <api name>.Services;
+
+public class MongoDBSettings
+{
+    private readonly IMongoCollection<the model> _modelNameCollection;
+}
+
+
+then in the constructor for that class, pass in the IOptions object that we configured earlier and initialize the mongo client, the database, and finally the collection by grabbing the appropriate strings from the IOptions object
+
+ex: 
+namespace <api name>.Services;
+
+public class MongoDBService
+{
+    private readonly IMongoCollection<the model> _modelNameCollection;
+
+    public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings)
+    {
+        var client = new MongoClient(mongDBSettings.Value.ConnectionURI);
+        var database = client.GetDatabase(mongoDbSettings.Value.DatabaseName);
+        _modelNameCollection = database.GetCollection<the model>(mongoDBSettings.Value.CollectionName);
+    }
+}
+
+
+
+then in program.cs,
+inject the mongodbservice into the application as a dependency with the appropriate lifetime
+
+ex:
+
+builder.Services.AddSingleton<MongoDBService>();
+
+
 
 
