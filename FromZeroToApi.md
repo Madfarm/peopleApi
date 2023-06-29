@@ -126,5 +126,13 @@ ex:
 builder.Services.AddSingleton<MongoDBService>();
 
 
+## Step 4 - Set up the database interactions in the service
+
+in the MongoDBService class, add a private readonly property for a filter definition,
+private readonly FilterDefinitionBuilder<the model> filterBuilder = Builders<the model>.Filter;
+
+then build out the crud operations for the model via methods on that class using the async task syntax
+
+
 
 
