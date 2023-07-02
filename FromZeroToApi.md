@@ -134,5 +134,21 @@ private readonly FilterDefinitionBuilder<the model> filterBuilder = Builders<the
 then build out the crud operations for the model via methods on that class using the async task syntax
 
 
+## Step 5 - Controller => Read and AsDto()
 
+## Step 5(cont) - Controller => Create and CreateDto
+
+## Step 5(cont) - Controller => Update and UpdateDto
+
+## Step 5(cont) - Controller => Delete
+
+## Step 6 - Health Checks
+in program.cs, add the health check service:
+builder.Services.AddHealthChecks();
+
+
+
+
+then configure the endpoint for healthchecks with middleware,
+app.MapHealthChecks("<url path here>");
 
