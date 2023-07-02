@@ -152,3 +152,7 @@ builder.Services.AddHealthChecks();
 then configure the endpoint for healthchecks with middleware,
 app.MapHealthChecks("<url path here>");
 
+
+then run this in the terminal,
+dotnet add package AspNetCore.HealthChecks.MongoDb
+
