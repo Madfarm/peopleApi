@@ -156,3 +156,5 @@ app.MapHealthChecks("<url path here>");
 then run this in the terminal,
 dotnet add package AspNetCore.HealthChecks.MongoDb
 
+
+now the health check will ping Mongo also
