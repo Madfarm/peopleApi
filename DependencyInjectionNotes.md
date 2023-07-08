@@ -11,3 +11,5 @@ Singleton - An instance of the service is created when the application is run an
 
 > Can cause issues with concurrency and multi-threading
 > memory efficient
+
+Compare to Angular DI?
