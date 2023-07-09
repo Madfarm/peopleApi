@@ -13,3 +13,4 @@ Singleton - An instance of the service is created when the application is run an
 > memory efficient
 
 Compare to Angular DI?
+Another time perhaps
