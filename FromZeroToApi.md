@@ -146,7 +146,18 @@ public async Task<List<Person>> GetPeople()
 
 
 ## Step 5 - Controller => Read and AsDto()
-in our service we will add function for interacting with the database that will return tasks that will fetch a single entity from the db and all entities from the db
+Create a directory named Dtos,
+in that directory, create a file called "<entityname>Dto.cs"
+
+Add it to the appropriate namespace then create a record appropriately named,
+
+public record EntityNameDto 
+{
+
+}
+
+then customize the Dto to only include information you want to be accessible on the front end as properties
+
 ## Step 5(cont) - Controller => Create and CreateDto
 
 ## Step 5(cont) - Controller => Update and UpdateDto
