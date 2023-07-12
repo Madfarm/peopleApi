@@ -133,9 +133,20 @@ private readonly FilterDefinitionBuilder<the model> filterBuilder = Builders<the
 
 then build out the crud operations for the model via methods on that class using the async task syntax
 
+public async Task<Person> GetOnePerson(Guid id)
+{
+    var filter = filterBuilder.Eq(person => person.Id, id);
+    return await _peopleCollection.Find(filter).SingleOrDefaultAsync();
+}
+
+public async Task<List<Person>> GetPeople()
+{
+    return await _peopleCollection.Find(new BsonDocument()).ToListAsync();
+}
+
 
 ## Step 5 - Controller => Read and AsDto()
-
+in our service we will add function for interacting with the database that will return tasks that will fetch a single entity from the db and all entities from the db
 ## Step 5(cont) - Controller => Create and CreateDto
 
 ## Step 5(cont) - Controller => Update and UpdateDto
