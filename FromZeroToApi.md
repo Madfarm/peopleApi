@@ -164,6 +164,10 @@ public record EntityNameDto
     public string Prop { get; init; }
 }
 
+Then create a Extensions.cs file in the root of the application
+
+in that file,
+add the file to the overarching namepspace
 
 ## Step 5(cont) - Controller => Create and CreateDto
 
