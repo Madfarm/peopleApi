@@ -158,6 +158,13 @@ public record EntityNameDto
 
 then customize the Dto to only include information you want to be accessible on the front end as properties
 
+public record EntityNameDto 
+{
+    public Guid Id { get; init; }
+    public string Prop { get; init; }
+}
+
+
 ## Step 5(cont) - Controller => Create and CreateDto
 
 ## Step 5(cont) - Controller => Update and UpdateDto
